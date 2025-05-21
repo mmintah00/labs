@@ -27,3 +27,11 @@ ensure you modify the bundle_dir in my case
 bundle_dir=/home/appuser/Downloads/ansible-automation-platform-setup-bundle-2.5-12-aarch64/bundle
 
 Refer to inventory growth file for installation
+
+#export ansible collections path
+export ANSIBLE_COLLECTIONS_PATH=/home/appuser/Downloads/ansible-automation-platform-containerized-setup-bundle-2.5-13-aarch64/collections/
+
+
+#run installer
+ansible-playbook -i inventory-growth  ansible.containerized_installer.install
+
