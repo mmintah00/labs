@@ -59,7 +59,10 @@ Make sure this path reflects the actual location on your machine.
 
 ## Inventory File
 
-Use the attached `inventory-growth` file provided with this bundle. You may need to edit it according to your environment. Most importantly, update the `bundle_dir` value inside the inventory file to match the path used above.
+Use the provided `inventory-growth` file for the installation. You can find it in the repository here:  
+🔗 [inventory-growth.txt](https://github.com/mmintah00/labs/blob/main/Ansible%20Automation%20Platform/inventory-growth.txt)
+
+You may need to edit it according to your environment. Most importantly, update the `bundle_dir` value inside the inventory file to match the path used above.
 
 ---
 
