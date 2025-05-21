@@ -86,6 +86,20 @@ ansible-playbook -i inventory-growth ansible.containerized_installer.install
 
 ---
 
+## forgotten EDA admin password
+
+execute the command below
+
+```
+podman secret  ls
+```
+
+```
+podman secret inspect --showsecret eda_admin_password | jq -r .[].SecretData
+```
+
+---
+
 ## Notes
 
 - Ensure the machine meets the hardware requirements.
