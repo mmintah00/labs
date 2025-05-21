@@ -1,37 +1,98 @@
-#Ansible Automation platform containerized 2.5.13
+# Ansible Automation Platform Containerized 2.5.13
 
-Tech Specs
-Redhat 9.6
-Memory 6 GiB
-CPU 4 cores
+This document provides a step-by-step guide to install **Ansible Automation Platform Containerized 2.5.13** on **Red Hat Enterprise Linux 9.6**.
 
-ansible-automation-platform-containerized-setup-bundle-2.5-13-aarch64
+---
 
+## Tech Specs
 
-Pre-requisites
-#set hostname
+- Operating System: Red Hat Enterprise Linux 9.6  
+- Memory: 6 GiB  
+- CPU: 4 cores  
+- Bundle: ansible-automation-platform-containerized-setup-bundle-2.5-13-aarch64
+
+---
+
+## Pre-requisites
+
+Set the hostname:
+```
 hostnamectl set-hostname ansible.local
+```
 
-#Register using subscription manager
+Register the system:
+```
 subscription-manager register
+```
 
-#install pre-requisites
+Install necessary packages:
+```
 sudo dnf install -y ansible-core wget git-core rsync vim
+```
 
+---
 
-#download the Ansible Automation platform containerized bundle
+## Download the Setup Bundle
+
+Download the Ansible Automation Platform containerized bundle for your architecture:
+
 https://access.redhat.com/downloads/content/480/ver=2.5/rhel---9/2.5/x86_64/product-software
 
-#unpack and add the inventory growth file attached
-ensure you modify the bundle_dir in my case
-bundle_dir=/home/appuser/Downloads/ansible-automation-platform-setup-bundle-2.5-12-aarch64/bundle
+Ensure the file name is:
+```
+ansible-automation-platform-containerized-setup-bundle-2.5-13-aarch64
+```
 
-Refer to inventory growth file for installation
+---
 
-#export ansible collections path
+## Unpack the Bundle
+
+After downloading, extract the contents and configure the bundle directory. For example:
+
+```
+bundle_dir=/home/appuser/Downloads/ansible-automation-platform-setup-bundle-2.5-13-aarch64/bundle
+```
+
+Make sure this path reflects the actual location on your machine.
+
+---
+
+## Inventory File
+
+Use the attached `inventory-growth` file provided with this bundle. You may need to edit it according to your environment. Most importantly, update the `bundle_dir` value inside the inventory file to match the path used above.
+
+---
+
+## Set Ansible Collections Path
+
+Export the collections path as follows:
+
+```
 export ANSIBLE_COLLECTIONS_PATH=/home/appuser/Downloads/ansible-automation-platform-containerized-setup-bundle-2.5-13-aarch64/collections/
+```
 
+---
 
-#run installer
-ansible-playbook -i inventory-growth  ansible.containerized_installer.install
+## Run the Installer
 
+Run the playbook using the inventory file:
+
+```
+ansible-playbook -i inventory-growth ansible.containerized_installer.install
+```
+
+---
+
+## Notes
+
+- Ensure the machine meets the hardware requirements.
+- Adjust firewall and SELinux settings as needed.
+- Double-check the inventory file paths and credentials.
+- Internet access may be required for pulling containers unless preloaded.
+
+---
+
+## Resources
+
+- Ansible Automation Platform Documentation: https://docs.ansible.com/
+- Red Hat Customer Portal: https://access.redhat.com
